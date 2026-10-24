@@ -46,4 +46,4 @@ Registration supports buyer and seller roles only. To provision an administrator
 
 ## Important limits
 
-The included business cards are sample UI data. They are not verified businesses or real financial disclosures. Use the backend and reviewed listings before accepting real seller information. Before production, configure HTTPS, a production CORS origin, secure authentication/session storage, email verification and password recovery, privacy/terms, audit logs for moderation, backups, and monitoring. No deployment or GitHub push has been performed.
+The included business cards are sample UI data. They are not verified businesses or real financial disclosures. Use the backend and reviewed listings before accepting real seller information. Before production, configure HTTPS, a production CORS origin, secure authentication/session storage, email verification and password recovery, privacy/terms, audit logs for moderation, backups, and monitoring. The source is published on GitHub; the app and API have not been deployed.
