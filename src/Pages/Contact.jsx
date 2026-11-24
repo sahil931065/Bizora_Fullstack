@@ -9,7 +9,8 @@ export default function Contact() {
     event.preventDefault();
     setStatus("sending");
     setError("");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload = {
       name: String(form.get("name")).trim(),
       email: String(form.get("email")).trim(),
@@ -23,7 +24,7 @@ export default function Contact() {
         const existing = JSON.parse(localStorage.getItem("bizora.contact.v1") || "[]");
         localStorage.setItem("bizora.contact.v1", JSON.stringify([{ ...payload, createdAt: new Date().toISOString(), id: `contact-${Date.now()}` }, ...existing].slice(0, 20)));
       }
-      event.currentTarget.reset();
+      formElement.reset();
       setStatus("sent");
     } catch (err) {
       setError(err.message);

@@ -102,16 +102,16 @@ export default function Navbar() {
               ["About", "/about"],
               ["Contact", "/contact"],
             ].map(([label, href], index) => (
-              <a
+              <Link
                 key={label}
                 ref={(el) => {
                   linksRef.current[index] = el;
                 }}
-                href={href}
+                to={href}
                 className="text-sm font-medium text-white/75 transition-colors duration-200 hover:text-lime-200"
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -136,12 +136,12 @@ export default function Navbar() {
               </Link>
             )}
 
-            <a
-              href="/sell"
+            <Link
+              to="/sell"
               className="rounded-xl bg-lime-200 px-5 py-2.5 text-sm font-semibold text-[#10150e] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime-100"
             >
               Sell a Business
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu */}
@@ -163,36 +163,36 @@ export default function Navbar() {
         {mobileOpen && (
           <div className="mt-4 border-t border-white/10 pt-4 md:hidden">
             <div className="flex flex-col gap-1">
-              <a
-                href="/businesses"
+              <Link
+                to="/businesses"
                 className="rounded-lg px-3 py-3 text-sm font-medium text-white hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 Browse Businesses
-              </a>
+              </Link>
 
-              <a
-                href="/how-it-works"
+              <Link
+                to="/how-it-works"
                 className="rounded-lg px-3 py-3 text-sm font-medium text-white hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 How It Works
-              </a>
+              </Link>
 
-              <a
-                href="/about"
+              <Link
+                to="/about"
                 className="rounded-lg px-3 py-3 text-sm font-medium text-white hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 About
-              </a>
-              <a
-                href="/contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="rounded-lg px-3 py-3 text-sm font-medium text-white hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 Contact
-              </a>
+              </Link>
 
               <div className="my-2 h-px bg-white/10" />
 
@@ -214,13 +214,13 @@ export default function Navbar() {
                 </Link>
               )}
 
-              <a
-                href="/sell"
+              <Link
+                to="/sell"
                 className="mt-1 rounded-xl bg-lime-200 px-4 py-3 text-center text-sm font-semibold text-[#10150e]"
                 onClick={() => setMobileOpen(false)}
               >
                 Sell a Business
-              </a>
+              </Link>
             </div>
           </div>
         )}
