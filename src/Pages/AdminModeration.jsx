@@ -1,0 +1,9 @@
+import { Navigate } from "react-router-dom";
+import { useBizora } from "../context/BizoraContext";
+
+export default function AdminModeration() {
+  const { user, moderationItems, moderateListing, isPreview } = useBizora();
+  if (!user || user.role !== "admin" || user.preview) return <Navigate to="/dashboard" replace />;
+  const pending = moderationItems;
+  return <main className="min-h-screen bg-[#080d0b] px-5 pb-24 pt-36"><div className="mx-auto max-w-7xl"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-200">OPERATIONS</p><h1 className="mt-3 font-['DM_Serif_Display'] text-5xl">Listing moderation</h1><p className="mt-3 text-sm text-white/55">Review new submissions before they appear in the marketplace.</p>{isPreview && <p className="mt-8 border border-white/10 bg-[#111816] p-5 text-sm">Moderation actions require an authenticated administrator account and the connected API.</p>}{pending.map((listing) => <article key={listing.id} className="mt-5 border border-white/10 bg-[#111816] p-6"><div className="flex flex-wrap justify-between gap-4"><div><h2 className="font-['DM_Serif_Display'] text-2xl">{listing.name}</h2><p className="mt-2 text-sm text-white/55">{listing.category} · {listing.country} · €{Number(listing.price).toLocaleString()}</p></div><span className="text-xs uppercase tracking-wider text-lime-200">Pending review</span></div><p className="mt-4 max-w-3xl text-sm leading-6 text-white/55">{listing.description}</p><div className="mt-5 flex gap-3"><button onClick={() => moderateListing(listing.id, "approve")} className="bg-[#111816] px-4 py-2 text-sm font-semibold text-white">Approve</button><button onClick={() => moderateListing(listing.id, "reject")} className="border border-white/10 px-4 py-2 text-sm font-semibold">Reject</button></div></article>)}{pending.length === 0 && <div className="mt-8 border border-white/10 bg-[#111816] p-8 text-sm text-white/55">No listings are waiting for review.</div>}</div></main>;
+}

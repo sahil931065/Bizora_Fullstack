@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+
+:root {
+  font-family: "Inter", sans-serif;
+  color: #f4f5ec;
+  background: #080d0b;
+}
+
+body {
+  margin: 0;
+  color: #f4f5ec;
+  background: #080d0b;
+}
+
+body:has(.home-v3) {
+  background: #080d0b;
+}
+
+main:not(.home-v3) :is(a, button)[class~="bg-[#111816]"] {
+  color: #11170e;
+  background-color: #dafa9e;
+}
+
+main:not(.home-v3) :is(a, button)[class~="bg-[#111816]"]:hover {
+  background-color: #e7ffc0;
+}
+
+main:not(.home-v3) input,
+main:not(.home-v3) textarea,
+main:not(.home-v3) select {
+  color: #f4f5ec;
+  background-color: #111816;
+}
+
+main:not(.home-v3) input::placeholder,
+main:not(.home-v3) textarea::placeholder {
+  color: rgb(244 245 236 / 38%);
+}
+
+main:not(.home-v3) option {
+  color: #f4f5ec;
+  background: #111816;
+}
+
+main:not(.home-v3) article,
+main:not(.home-v3) .grid > div[class*="border"] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
